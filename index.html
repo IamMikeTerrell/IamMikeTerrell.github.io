@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mike Terrell — Singer · Songwriter · Actor · Vocal Producer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --red: #C0272D;
+    --gold: #B8960C;
+    --gold-lt: #D4AF37;
+    --navy: #0D1B2A;
+    --dark: #080808;
+    --off-white: #F5F2EE;
+    --gray: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 20px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 900;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: #ccc; text-decoration: none;
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red); }
+
+  /* HERO */
+  .hero {
+    position: relative; height: 100vh;
+    display: flex; align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a14 100%);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(192,39,45,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(184,150,12,0.08) 0%, transparent 50%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 48px 80px;
+    max-width: 800px;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(184,150,12,0.15);
+    border: 1px solid rgba(184,150,12,0.4);
+    border-radius: 2px;
+    padding: 6px 14px; margin-bottom: 28px;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold-lt);
+  }
+  .hero-badge::before { content: '★'; }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 9vw, 110px);
+    font-weight: 900; line-height: 0.92;
+    margin-bottom: 24px;
+  }
+  h1 .line-red { color: var(--red); display: block; }
+  .hero-sub {
+    font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 40px;
+  }
+  .hero-sub span { color: #fff; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--red); color: #fff;
+    padding: 14px 32px; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #a01e24; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: #fff;
+    padding: 13px 32px;
+    border: 1px solid rgba(255,255,255,0.25);
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: #fff; transform: translateY(-1px); }
+
+  /* RED LINE */
+  .redline { width: 100%; height: 4px; background: var(--red); }
+
+  /* STATS */
+  .stats {
+    background: var(--navy);
+    padding: 32px 48px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat {
+    padding: 24px 32px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; font-weight: 900;
+    color: var(--red); line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gray);
+  }
+
+  /* NORWAY ALERT */
+  .norway-alert {
+    background: linear-gradient(135deg, rgba(29,158,117,0.12), rgba(29,158,117,0.06));
+    border: 1px solid rgba(29,158,117,0.3);
+    padding: 20px 48px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .norway-flag { font-size: 28px; }
+  .norway-text { flex: 1; }
+  .norway-text strong { color: #1D9E75; font-size: 13px; letter-spacing: 0.06em; }
+  .norway-text p { font-size: 12px; color: var(--gray); margin-top: 2px; }
+  .norway-stat-badge {
+    background: rgba(29,158,117,0.2); border: 1px solid rgba(29,158,117,0.4);
+    padding: 8px 16px; font-size: 12px; color: #1D9E75;
+    white-space: nowrap;
+  }
+
+  /* SECTION */
+  section { padding: 100px 48px; }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 16px;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 900; line-height: 1.05;
+    margin-bottom: 24px;
+  }
+
+  /* MUSIC */
+  .music-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 48px;
+  }
+  .music-card {
+    background: #111; padding: 32px;
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: border-color 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .music-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--red);
+  }
+  .music-card:hover { border-color: rgba(192,39,45,0.3); }
+  .music-tag {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 12px;
+  }
+  .music-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .music-sub { font-size: 13px; color: var(--gray); margin-bottom: 24px; }
+  .music-link {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--red); text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .music-link::after { content: '→'; }
+
+  /* CREDITS */
+  .credits-section { background: #0a0a0a; }
+  .credits-marquee {
+    overflow: hidden; margin: 48px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 20px 0;
+  }
+  .credits-track {
+    display: flex; gap: 60px; width: max-content;
+    animation: marquee 25s linear infinite;
+  }
+  .credits-track span {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; color: rgba(255,255,255,0.25);
+    white-space: nowrap; font-style: italic;
+  }
+  .credits-track span.highlight { color: rgba(192,39,45,0.6); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* TV GRID */
+  .tv-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; margin-top: 48px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .tv-item {
+    padding: 28px 24px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+  .tv-item:last-child { border-right: none; }
+  .tv-item:hover { background: rgba(255,255,255,0.02); }
+  .tv-show { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .tv-role { font-size: 11px; color: var(--red); letter-spacing: 0.06em; }
+  .tv-net { font-size: 11px; color: var(--gray); margin-top: 4px; }
+
+  /* LINKS PAGE */
+  .links-section {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 100px 48px;
+  }
+  .links-profile { text-align: center; margin-bottom: 48px; }
+  .links-profile-img {
+    width: 100px; height: 100px; border-radius: 50%;
+    border: 2px solid var(--red);
+    object-fit: cover; margin: 0 auto 20px;
+    display: block;
+    background: #222; /* placeholder */
+  }
+  .links-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 900;
+  }
+  .links-bio { font-size: 13px; color: var(--gray); margin-top: 8px; }
+  .links-badge {
+    display: inline-block; margin-top: 12px;
+    background: rgba(184,150,12,0.15);
+    border: 1px solid rgba(184,150,12,0.4);
+    padding: 4px 12px; font-size: 11px;
+    letter-spacing: 0.1em; color: var(--gold-lt);
+  }
+  .links-list { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 12px; }
+  .link-btn {
+    display: block; width: 100%;
+    padding: 18px 28px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #fff; text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    text-align: center; letter-spacing: 0.04em;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    position: relative;
+  }
+  .link-btn:hover {
+    background: rgba(192,39,45,0.15);
+    border-color: var(--red);
+    transform: translateY(-2px);
+  }
+  .link-btn.featured {
+    background: var(--red); border-color: var(--red);
+    font-weight: 500;
+  }
+  .link-btn.featured:hover { background: #a01e24; }
+  .link-btn .emoji { margin-right: 10px; }
+
+  /* BOOKING */
+  .booking-section { background: var(--dark); }
+  .booking-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; margin-top: 64px; align-items: start;
+  }
+  .booking-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; margin-bottom: 16px;
+  }
+  .booking-info p { color: var(--gray); line-height: 1.7; margin-bottom: 24px; }
+  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .contact-list li {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 14px; color: #ccc;
+  }
+  .contact-list li span:first-child { color: var(--red); font-size: 16px; }
+
+  /* FOOTER */
+  footer {
+    background: #000; padding: 40px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 900;
+  }
+  .footer-logo span { color: var(--red); }
+  .footer-copy { font-size: 12px; color: var(--gray); }
+  .footer-social { display: flex; gap: 20px; }
+  .footer-social a {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gray); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-social a:hover { color: var(--red); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * { animation: fadeUp 0.8s ease forwards; opacity: 0; }
+  .hero-badge { animation-delay: 0.2s; }
+  h1 { animation-delay: 0.4s; }
+  .hero-sub { animation-delay: 0.6s; }
+  .hero-ctas { animation-delay: 0.8s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 60px 24px; }
+    .stats { grid-template-columns: repeat(2,1fr); padding: 16px 24px; }
+    .music-grid { grid-template-columns: 1fr; }
+    .tv-grid { grid-template-columns: repeat(2,1fr); }
+    .booking-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+    .norway-alert { flex-direction: column; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MIKE <span>TERRELL</span></div>
+  <ul class="nav-links">
+    <li><a href="#music">Music</a></li>
+    <li><a href="#credits">Credits</a></li>
+    <li><a href="#links">Links</a></li>
+    <li><a href="#booking">Booking</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="redline"></div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Grammy Nominated Artist · 2026</div>
+    <h1>
+      MIKE
+      <span class="line-red">TERRELL</span>
+    </h1>
+    <p class="hero-sub">
+      <span>Singer</span> · <span>Songwriter</span> · <span>Actor</span> · <span>Vocal Producer</span> · Los Angeles
+    </p>
+    <div class="hero-ctas">
+      <a href="https://open.spotify.com/artist/7tJr4HtY9fFjnbvG6LqqFf" class="btn-primary" target="_blank">Stream Now</a>
+      <a href="#booking" class="btn-outline">Book Mike</a>
+    </div>
+  </div>
+</section>
+<div class="redline"></div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">+549%</div>
+    <div class="stat-label">Listener Growth — 28 Days</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">6,468</div>
+    <div class="stat-label">Monthly Spotify Listeners</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">13K+</div>
+    <div class="stat-label">Total Streams</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2026</div>
+    <div class="stat-label">Grammy Nominated</div>
+  </div>
+</div>
+
+<!-- NORWAY ALERT -->
+<div class="norway-alert">
+  <div class="norway-flag">🇳🇴</div>
+  <div class="norway-text">
+    <strong>International Breakthrough — Norway</strong>
+    <p>"How Hard I Tried" feat. Mike Terrell × EIVIND · daWorks Records · Oslo, Norway · Released April 17, 2026</p>
+  </div>
+  <div class="norway-stat-badge">Norway #2 Country Worldwide · 97.8% Active Rate</div>
+</div>
+
+<!-- MUSIC -->
+<section id="music">
+  <div class="section-label">Discography</div>
+  <h2>The Music</h2>
+  <div class="music-grid">
+    <div class="music-card">
+      <div class="music-tag">Featured — Out Now</div>
+      <div class="music-title">How Hard I Tried</div>
+      <div class="music-sub">EIVIND feat. Mike Terrell · daWorks Records</div>
+      <a href="https://open.spotify.com/artist/7tJr4HtY9fFjnbvG6LqqFf" class="music-link" target="_blank">Stream Now</a>
+    </div>
+    <div class="music-card">
+      <div class="music-tag">Latest Single — Out Now</div>
+      <div class="music-title">Down</div>
+      <div class="music-sub">Mike Terrell · All Platforms</div>
+      <a href="https://open.spotify.com/artist/7tJr4HtY9fFjnbvG6LqqFf" class="music-link" target="_blank">Stream Now</a>
+    </div>
+    <div class="music-card">
+      <div class="music-tag">Debut Single</div>
+      <div class="music-title">Red Flags</div>
+      <div class="music-sub">Mike Terrell · All Platforms</div>
+      <a href="https://music.apple.com/us/artist/mike-terrell/1853122464" class="music-link" target="_blank">Stream Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- CREDITS MARQUEE -->
+<section class="credits-section">
+  <div class="section-label">The Resume</div>
+  <h2>The Rooms<br>He's Been In</h2>
+  <div class="credits-marquee">
+    <div class="credits-track">
+      <span class="highlight">Kanye West</span>
+      <span>Sunday Service Choir 2021–2024</span>
+      <span class="highlight">Post Malone</span>
+      <span>12 Carat Tour</span>
+      <span class="highlight">Alicia Keys</span>
+      <span>Keys to the Summer Tour</span>
+      <span class="highlight">Stevie Wonder</span>
+      <span>Take Your Heart</span>
+      <span class="highlight">Chloe Bailey</span>
+      <span>In Pieces Album</span>
+      <span class="highlight">Jon B</span>
+      <span>Principal BGV 2023–Now</span>
+      <span class="highlight">Kanye West</span>
+      <span>Sunday Service Choir 2021–2024</span>
+      <span class="highlight">Post Malone</span>
+      <span>12 Carat Tour</span>
+      <span class="highlight">Alicia Keys</span>
+      <span>Keys to the Summer Tour</span>
+      <span class="highlight">Stevie Wonder</span>
+      <span>Take Your Heart</span>
+      <span class="highlight">Chloe Bailey</span>
+      <span>In Pieces Album</span>
+      <span class="highlight">Jon B</span>
+      <span>Principal BGV 2023–Now</span>
+    </div>
+  </div>
+
+  <!-- TV GRID -->
+  <div class="section-label" style="margin-top:48px">Television & Film</div>
+  <div class="tv-grid">
+    <div class="tv-item"><div class="tv-show">Twenties</div><div class="tv-role">Recurring</div><div class="tv-net">BET</div></div>
+    <div class="tv-item"><div class="tv-show">Wu-Tang: An American Saga</div><div class="tv-role">Co-Star</div><div class="tv-net">Hulu</div></div>
+    <div class="tv-item"><div class="tv-show">Empire</div><div class="tv-role">Co-Star</div><div class="tv-net">FOX</div></div>
+    <div class="tv-item"><div class="tv-show">The Chi</div><div class="tv-role">Co-Star</div><div class="tv-net">Showtime</div></div>
+    <div class="tv-item"><div class="tv-show">Chicago P.D.</div><div class="tv-role">Co-Star</div><div class="tv-net">NBC</div></div>
+    <div class="tv-item"><div class="tv-show">BET Awards</div><div class="tv-role">Performer</div><div class="tv-net">2022 & 2024</div></div>
+    <div class="tv-item"><div class="tv-show">Book of Clarence</div><div class="tv-role">Choir Vocals</div><div class="tv-net">2024</div></div>
+    <div class="tv-item"><div class="tv-show">NBA — LA Clippers</div><div class="tv-role">National Anthem</div><div class="tv-net">Crypto.com Arena</div></div>
+  </div>
+</section>
+
+<!-- LINKS PAGE -->
+<section class="links-section" id="links">
+  <div class="links-profile">
+    <div class="links-profile-img"></div>
+    <div class="links-name">Mike Terrell</div>
+    <div class="links-bio">Singer · Songwriter · Actor · Vocal Producer · Los Angeles</div>
+    <div class="links-badge">★ Grammy Nominated Artist · 2026</div>
+  </div>
+  <div class="links-list">
+    <a href="https://open.spotify.com/artist/7tJr4HtY9fFjnbvG6LqqFf" class="link-btn featured" target="_blank">
+      <span class="emoji">🎧</span>Stream "Down" — Spotify
+    </a>
+    <a href="https://music.apple.com/us/artist/mike-terrell/1853122464" class="link-btn" target="_blank">
+      <span class="emoji">🍎</span>Apple Music
+    </a>
+    <a href="mailto:Miketerrellbooking@gmail.com?subject=Vocal Coaching Inquiry" class="link-btn">
+      <span class="emoji">🎙</span>Book Vocal Coaching — $100–$300
+    </a>
+    <a href="mailto:Miketerrellbooking@gmail.com?subject=Vocal Production Booking" class="link-btn">
+      <span class="emoji">🎛</span>Vocal Production Booking
+    </a>
+    <a href="https://www.instagram.com/iammiketerrell" class="link-btn" target="_blank">
+      <span class="emoji">📸</span>Instagram — @iammiketerrell
+    </a>
+    <a href="https://www.tiktok.com/@iammiketerrell" class="link-btn" target="_blank">
+      <span class="emoji">🎵</span>TikTok — @iammiketerrell
+    </a>
+    <a href="mailto:Miketerrellbooking@gmail.com" class="link-btn">
+      <span class="emoji">✉️</span>Booking & Press
+    </a>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="redline" style="margin-bottom:64px"></div>
+  <div class="section-label">Get In Touch</div>
+  <h2>Work With Mike</h2>
+  <div class="booking-grid">
+    <div class="booking-info">
+      <h3>Music Booking & Press</h3>
+      <p>For performance bookings, press inquiries, brand partnerships, sync licensing, and all general music business inquiries.</p>
+      <ul class="contact-list">
+        <li><span>✉</span><span>Miketerrellbooking@gmail.com</span></li>
+        <li><span>📞</span><span>310-720-8284</span></li>
+        <li><span>📍</span><span>Los Angeles, CA</span></li>
+        <li><span>📱</span><span>@iammiketerrell</span></li>
+      </ul>
+    </div>
+    <div class="booking-info">
+      <h3>Acting — SAG-AFTRA</h3>
+      <p>For casting submissions, theatrical inquiries, and acting representation contact. Represented by Gill Talent and The Carry Company.</p>
+      <ul class="contact-list">
+        <li><span>✉</span><span>Michaeladkinssings@gmail.com</span></li>
+        <li><span>📞</span><span>267-632-9060</span></li>
+        <li><span>🎭</span><span>SAG-AFTRA · Gill Talent · The Carry Company</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="redline"></div>
+<footer>
+  <div class="footer-logo">MIKE <span>TERRELL</span></div>
+  <div class="footer-copy">© 2026 Mike Terrell. All rights reserved.</div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/iammiketerrell" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@iammiketerrell" target="_blank">TikTok</a>
+    <a href="https://open.spotify.com/artist/7tJr4HtY9fFjnbvG6LqqFf" target="_blank">Spotify</a>
+  </div>
+</footer>
+
+</body>
+</html>
