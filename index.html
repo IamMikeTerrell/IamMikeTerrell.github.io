@@ -47,9 +47,9 @@ section{padding:100px 48px}
 h2{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,64px);font-weight:900;line-height:1.02;margin-bottom:28px}
 h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:14px}
 .bio-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.bio-photo{position:relative}
+.bio-photo{position:relative;border:3px solid var(--red);padding:8px;background:#080808}
 .bio-photo img{width:100%;display:block;object-fit:cover;max-height:600px}
-.bio-photo::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;border:2px solid var(--red);z-index:-1}
+.bio-photo::before{display:none}
 .bio-text p{color:#bbb;line-height:1.8;margin-bottom:18px;font-size:15px}
 .bio-text strong{color:#fff}
 .bio-quote{border-left:3px solid var(--red);padding:16px 24px;margin:28px 0;background:rgba(192,39,45,.06)}
@@ -155,7 +155,7 @@ footer{flex-direction:column;gap:16px;text-align:center}
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge">Grammy Nominated Artist · 2026</div>
+    <div class="hero-badge">Grammy Nominated · 2024 &amp; 2026</div>
     <h1>MIKE<span class="red">TERRELL</span></h1>
     <p class="hero-sub"><b>Singer</b> · <b>Songwriter</b> · <b>Actor</b> · <b>Vocal Producer</b> · Los Angeles</p>
     <div class="ctas">
